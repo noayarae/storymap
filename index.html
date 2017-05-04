@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Corvallis Pedestrian Accessibility</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--add required stylesheets-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+    <!--storymap stylesheet -->
+    <link rel="stylesheet" type="text/css" href="css/storymap.css" />
+
+    <!--add required libraries-->
+    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!--add ajax based data transmission-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+
+    <!--storymap javascript library -->
+    <script src="js/storymap.js"></script>
+    <script src="js/globeminimap.js"></script>
+</head>
+
+<body>
+<header>
+    <div class="wrapper">
+        <h1>  <img src="img/OSU.png" width="175px" align="right">
+        </h1>
+        <h2>
+            Identification of Suitable Wetlands for Bird Species
+
+        </h2>
+    </div>
+
+</header>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 main">
+
+            <section data-scene="scene1">
+                <h3>Study Area</h3>
+                <br>
+                <br>
+                <h4>Study Area</h4>
+                <br>
+                <h4>Big Creek Watershed</h4>
+                <p>Big Watershed is located in Southwestern Indiana. It is integrated by Big Creek Watershed (BCW) (HUC: 0512011307), and two sub-watersheds within the western part of the Bayou Creek Watershed (BaCW) (HUC: 0514020206).
+                    Both watersheds in the study area encompass a total area of 784.6 km2.
+                </p>
+                <!--<img src="img/RouteTimes.png" class="img-responsive" alt="responsive image" alt-text="Routes">-->
+                <div class="slides">
+                    <img src="img/indiana_location.png" class="img-responsive" alt="responsive image" alt-text="Routes">
+                    <p> The studied area lies in three of Indiana’s counties: Posey, Vanderburgh, and Gibson. These counties account for 70.1%, 22.9%, and 7.0% of the study area, respectively.</p>
+                    <img src="img/location2.png" class="img-responsive" alt="responsive image" alt-text="Routes">
+                </div>
+            </section>
+
+            <section data-scene="scene2">
+                <h3>USGS straem stations employed for Hydrological Maodelling</h3>
+                <br>
+                <h3>Big Creek USGS near to Wadesville</h3>
+                <p>This station is located at latitude: 38°04'59.2" N, longitude: 87°46'10.7" W.
+                    This stream station is located almost in the middle of Big Creek route and encompass 269.95 Km2.</p>
+                <img src="img/station1.png" class="img-responsive" alt="responsive image">
+                <br>
+                <p>Discharge records for last months are shown below.</p>
+                <img src="img/discharge1.png" class="img-responsive" alt="responsive image">
+            </section>
+
+            <section data-scene="scene3">
+                <h3>Potential Wetland Areas in Big Creek Watershed</h3>
+                <p>Based on Babbar's methodology, potential-wetlands suitable for four focused bird-species were obtained.</p>
+                <br>
+                <h4>American Redstart</h4>
+                <p>The American redstart is a New World warbler. It is unrelated to the Old World redstarts.</p>
+                <img src="img/bird_amre.png" class="img-responsive" alt="responsive image">
+                <h4>American Woodcock</h4>
+                <p>The American woodcock, sometimes colloquially referred to as the timberdoodle, is a small chunky shorebird species found primarily in the eastern half of North America.</p>
+                <img src="img/bird_amwo.png" class="img-responsive" alt="responsive image">
+                <h4>Red-eyed Vireo</h4>
+                <p>The red-eyed vireo is a small American songbird, 13–14 cm in length. It is somewhat warbler-like but not closely related to the New World warblers. Common across its vast range, this species is not considered threatened by the IUCN.</p>
+                <img src="img/bird_revi.png" class="img-responsive" alt="responsive image">
+                <h4>Wood Duck</h4>
+                <p>The wood duck or Carolina duck is a species of perching duck found in North America. It is one of the most colorful North American waterfowl.</p>
+                <img src="img/bird_wodu.png" class="img-responsive" alt="responsive image">
+            </section>
+
+            <div class="animated rubberBand infinite glyphicon glyphicon-menu-down arrow-down"></div>
+        </div>
+
+        <div id="map" class="col-sm-0 col-md-0 sidebar"></div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    var layers = {
+        'layer 1': [ L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoibm9heWFyYWUiLCJhIjoiY2oyOGF0cnRkMDBudzMybW1jcG56NzJpayJ9.6fByAW4OwMQFH27KzsWlBQ', {id: 'mapbox.dark'}), '<p><b>legend 1</b></p>'],
+        'layer 2': [ L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoibm9heWFyYWUiLCJhIjoiY2oyOGF0cnRkMDBudzMybW1jcG56NzJpayJ9.6fByAW4OwMQFH27KzsWlBQ', {id: 'mapbox.dark'}), '<p><b>legend 1</b></p>'],
+        'layer 3': [ L.tileLayer('https://api.mapbox.com/styles/v1/noayarae/cj28bquti00052ro12efbbrc2/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoibm9heWFyYWUiLCJhIjoiY2oyOGF0cnRkMDBudzMybW1jcG56NzJpayJ9.6fByAW4OwMQFH27KzsWlBQ', {id: 'mapbox.dark'}), '<p><b>legend 1</b></p>'],
+//        'layer 4': [ L.tileLayer('https://api.mapbox.com/styles/v1/noayarae/cj28bbft200082rpp6xa8uxgh/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoibm9heWFyYWUiLCJhIjoiY2oyOGF0cnRkMDBudzMybW1jcG56NzJpayJ9.6fByAW4OwMQFH27KzsWlBQ', {id: 'mapbox.dark'}), '<p><b>legend 1</b></p>'],
+
+        'watershed': [ L.geoJson.ajax('assets/wtshd2.geojson',  {
+            color: '#fb2666',
+            weight: 4,
+            opacity: 0.7})],
+
+        'potwet': [ L.geoJson.ajax('assets/potwetland.geojson',  {
+            color: '#48ff33',
+            weight: 2
+        })],
+        //Add onEachFeature for markers if this won't display points
+        'hstation': [ L.geoJson.ajax('assets/gauge1.geojson',  {
+            color: '#ff6b2a'
+        })]
+    };
+    var scenes = {
+        scene1: {lat: 38.08311, lng: -88.069639, zoom: 10, layers: ['layer 1','watershed']},
+        scene2: {lat: 38.08311, lng: -88.069639, zoom: 10, layers: ['layer 2','hstation']},
+        scene3: {lat: 38.08311, lng: -88.069639, zoom: 10, layers: ['layer 3','potwet']}
+    };
+    $('.main').storymap({
+        scenes: scenes,
+        layers: layers,
+        legend: true,
+        createMap: function () {
+            // create a map in the "map" div, set the view to a given place and zoom
+            var map = L.map('map', {zoomControl: false, scrollWheelZoom: false});
+            L.control.scale({position: 'bottomright', metric: false}).addTo(map);
+            return map;
+        }
+    });
+</script>
+
+</body>
+</html>
