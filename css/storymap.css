@@ -1,51 +1,87 @@
-header {
-    background-color: #ff8d00;
-    width: 100%;
-    height: 58px;
-    position: fixed;
-    z-index: 9999;
-}
-h1{
-    font-size: small;
-    color: white;
-}
-.slogan-area {
-    margin: 0 auto 50px;
-    padding-top: 80px;
-    max-width: 960px;
-    width: calc(100% - 30px);
-    display: block;
-}
-h2{
-    font-family: Century;
-    font-size: 200%;
-    color: #ffffff;
-    position: absolute;
-    right: 30%;
-    top: 0.5%;
-}
 body {
     margin: 0;
     font-family:  'Open Sans', sans-serif;
+
 }
 
 h3 {
     margin: 0;
-    padding-top: 5px;
-    font-family:  Century, 'Open Sans', sans-serif;
-    color: #0e0e0e;
-    font-size: 15px;
+    padding-top: 100px;
+    font-family:  Lobster, 'Open Sans', sans-serif;
+    color: rgba(169, 169, 169, 0.8);
+    font-size: 50px;
 }
 
 .main {
-    padding: 0px;
-    padding-bottom: 1000px;
+    padding: 20px;
+    padding-bottom: 1600px;
     z-index: 1001;
+    display: none;
 }
 
+/*.container-fluid {*/
+
+    /*display: none;*/
+/*}*/
 .main .page-header {
     margin-top: 0;
 }
+
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(236, 236, 236);
+    display: block;
+    z-index: 1004;
+    color: rgb(63, 63, 63);
+}
+
+#loading i {
+    color: rgba(63, 63, 63, 0.4);
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    font-size: 40px;
+}
+
+.navbar {
+    position: fixed;
+    top: 40%;
+    left: 0;
+    z-index: 1002;
+    border-radius: 3px;
+    background: rgba(115, 115, 115, 0.2);
+    color: rgba(63, 63, 63, 0.3);
+    padding:0;
+    margin:0;
+    font-size: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    opacity: 0;
+    filter:alpha(opacity=0);
+    -moz-opacity:0;
+}
+
+.navbar > li {
+    position: relative;
+    display: block !important;
+    cursor: pointer;
+}
+
+.navbar li a {
+    outline: 1px;
+    border: 0;
+    padding: 8px;
+    background-color: transparent;
+}
+
+.navbar li a:visited,.navbar li a:active, .navbar li a:link  {color: rgba(160, 160, 160, 0.6); text-decoration:none}
+.navbar li a:hover   {color: rgba(102, 102, 102, 0.68); text-decoration:none; font-size:12px}
+
+/*support video in IE 8 and 9*/
+video {display: block;}
 
 .viewing {
     background: #eee;
@@ -61,10 +97,10 @@ h3 {
     bottom: 0;
     right: 0;
     display : none;
-    padding: 20px;
     border-radius: 0;
-    height: 100%;
-    width: 100%;
+    min-height: 100%;
+    min-width: 100%;
+    pointer-events: none;
 }
 
 .section-opacity {
@@ -78,10 +114,10 @@ h3 {
 }
 
 .end-background-img {
-    background: url(../assets/end.jpg) no-repeat center center fixed;
+    background: url(../assets/frontpage.jpg) no-repeat center center fixed;
 }
 
-.background-img-setting {
+.background-fullscreen-setting {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -108,7 +144,7 @@ h3 {
     .main {
         padding-right: 40px;
         padding-left: 40px;
-        width: 510px;
+        width: 600px;
     }
 
 }
@@ -138,7 +174,7 @@ h3 {
     }
 
     .viewing {
-        background: rgba(221, 221, 221, 0.9);
+        background: rgba(221, 221, 221, 0.6);
     }
 }
 
@@ -166,12 +202,12 @@ section {
     cursor: pointer;
     z-index:1002;
     font-size: 60px;
-    color: rgba(250, 119, 139, 0.9);
+    color: rgba(165, 165, 165, 0.6);
 }
 
 
 .arrow-down:hover {
-    color: #0e0e0e;
+    color: rgba(14, 14, 14, 0.8);
 }
 
 
@@ -179,13 +215,14 @@ section {
     position:fixed;
     cursor: pointer;
     font-size:24px;
-    color:orangered;
+    color: rgba(169, 169, 169, 0.8);
     z-index:1003;
-    top: 50px;
-    left: 0.2%;
+    top: 20px;
+    left:5px;
 }
+
 .btn:hover {
-    color: white;
+    color: rgba(0, 0, 139, 0.8);
     text-decoration: none;
 }
 
@@ -195,7 +232,6 @@ section {
     color: #333333;
     font-family: 'Open Sans', Helvetica, sans-serif;
     padding: 6px 8px;
-    background: white;
     background: rgba(255,255,255,0.5);
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border-radius: 5px;
